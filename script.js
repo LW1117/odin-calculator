@@ -13,7 +13,13 @@ const clearButton = document.getElementById("clear-button");
 add = () => firstOperand + secondOperand;
 subtract = () => firstOperand - secondOperand;
 multiply = () => firstOperand * secondOperand;
-divide = () => firstOperand / secondOperand;
+divide = () => {
+  if (secondOperand == 0) {
+    alert("Nice try!!");
+    return null;
+  }
+  return firstOperand / secondOperand;
+};
 
 operate = () => {
   if (operator == "+") return add();
@@ -35,6 +41,11 @@ numberButtons.forEach((numberButton) => {
 
 operatorButtons.forEach((operatorButton) => {
   operatorButton.addEventListener("click", () => {
+    if (operator) {
+      secondOperand = parseInt(displayValue);
+      displayValue = operate();
+      populateDisplay(displayValue);
+    }
     operator = operatorButton.value;
     firstOperand = parseInt(displayValue);
     displayValue = "";
@@ -45,6 +56,7 @@ calculateButton.addEventListener("click", () => {
   secondOperand = parseInt(displayValue);
   displayValue = operate();
   populateDisplay(displayValue);
+  secondOperand = 0;
 });
 
 clearButton.addEventListener("click", () => {
