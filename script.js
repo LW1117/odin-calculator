@@ -8,6 +8,7 @@ const displayElement = document.getElementById("display-element");
 const numberButtons = document.querySelectorAll(".number-button");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const calculateButton = document.getElementById("calculate-button");
+const clearButton = document.getElementById("clear-button");
 
 add = () => firstOperand + secondOperand;
 subtract = () => firstOperand - secondOperand;
@@ -28,7 +29,7 @@ populateDisplay = (itemToDisplay) => {
 numberButtons.forEach((numberButton) => {
   numberButton.addEventListener("click", () => {
     displayValue += numberButton.value;
-    displayElement.innerText = displayValue;
+    populateDisplay(displayValue);
   });
 });
 
@@ -43,5 +44,13 @@ operatorButtons.forEach((operatorButton) => {
 calculateButton.addEventListener("click", () => {
   secondOperand = parseInt(displayValue);
   displayValue = operate();
-  displayElement.innerText = displayValue;
+  populateDisplay(displayValue);
+});
+
+clearButton.addEventListener("click", () => {
+  firstOperand = 0;
+  secondOperand = 0;
+  operator = "";
+  displayValue = "";
+  populateDisplay(displayValue);
 });
