@@ -27,7 +27,7 @@ operate = () => {
   if (operator == "+") return add();
   else if (operator == "-") return subtract();
   else if (operator == "*") return multiply();
-  else if (operator == "/") return divide();
+  else if (operator == "/") return divide().toFixed(3);
 };
 
 populateDisplay = (itemToDisplay) => {
@@ -49,6 +49,7 @@ operatorButtons.forEach((operatorButton) => {
       populateDisplay(displayValue);
     }
     operator = operatorButton.value;
+    populateDisplay(`${displayValue} ${operator}`);
     firstOperand = parseFloat(displayValue);
     displayValue = "";
   });
@@ -57,7 +58,7 @@ operatorButtons.forEach((operatorButton) => {
 calculateButton.addEventListener("click", () => {
   secondOperand = parseFloat(displayValue);
   displayValue = operate();
-  populateDisplay(displayValue.toFixed(3));
+  populateDisplay(`= ${displayValue}`);
   secondOperand = parseFloat(displayValue);
   operator = "";
 });
