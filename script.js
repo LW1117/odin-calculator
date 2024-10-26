@@ -9,6 +9,7 @@ const numberButtons = document.querySelectorAll(".number-button");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const calculateButton = document.getElementById("calculate-button");
 const clearButton = document.getElementById("clear-button");
+const backspaceButton = document.getElementById("backspace-button");
 
 add = () => firstOperand + secondOperand;
 subtract = () => firstOperand - secondOperand;
@@ -65,5 +66,10 @@ clearButton.addEventListener("click", () => {
   secondOperand = 0;
   operator = "";
   displayValue = "";
+  populateDisplay(displayValue);
+});
+
+backspaceButton.addEventListener("click", () => {
+  displayValue = displayValue.slice(0, -1);
   populateDisplay(displayValue);
 });
