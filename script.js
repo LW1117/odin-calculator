@@ -57,7 +57,7 @@ operatorButtons.forEach((operatorButton) => {
 calculateButton.addEventListener("click", () => {
   secondOperand = parseFloat(displayValue);
   displayValue = operate();
-  populateDisplay(displayValue);
+  populateDisplay(displayValue.toFixed(3));
   secondOperand = parseFloat(displayValue);
   operator = "";
 });
