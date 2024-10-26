@@ -56,7 +56,8 @@ calculateButton.addEventListener("click", () => {
   secondOperand = parseInt(displayValue);
   displayValue = operate();
   populateDisplay(displayValue);
-  secondOperand = 0;
+  secondOperand = parseInt(displayValue);
+  operator = "";
 });
 
 clearButton.addEventListener("click", () => {
