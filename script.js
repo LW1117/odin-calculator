@@ -7,6 +7,7 @@ let displayValue = "";
 const displayElement = document.getElementById("display-element");
 const numberButtons = document.querySelectorAll(".number-button");
 const operatorButtons = document.querySelectorAll(".operator-button");
+const decimalButton = document.getElementById("decimal-button");
 const calculateButton = document.getElementById("calculate-button");
 const clearButton = document.getElementById("clear-button");
 const backspaceButton = document.getElementById("backspace-button");
@@ -43,22 +44,29 @@ numberButtons.forEach((numberButton) => {
 operatorButtons.forEach((operatorButton) => {
   operatorButton.addEventListener("click", () => {
     if (operator) {
-      secondOperand = parseInt(displayValue);
+      secondOperand = parseFloat(displayValue);
       displayValue = operate();
       populateDisplay(displayValue);
     }
     operator = operatorButton.value;
-    firstOperand = parseInt(displayValue);
+    firstOperand = parseFloat(displayValue);
     displayValue = "";
   });
 });
 
 calculateButton.addEventListener("click", () => {
-  secondOperand = parseInt(displayValue);
+  secondOperand = parseFloat(displayValue);
   displayValue = operate();
   populateDisplay(displayValue);
-  secondOperand = parseInt(displayValue);
+  secondOperand = parseFloat(displayValue);
   operator = "";
+});
+
+decimalButton.addEventListener("click", () => {
+  if (!displayValue.includes(".")) {
+    displayValue += decimalButton.value;
+    populateDisplay(displayValue);
+  }
 });
 
 clearButton.addEventListener("click", () => {
