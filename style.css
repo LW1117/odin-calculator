@@ -21,6 +21,9 @@ body {
   background-color: #0c253f;
   color: #ff6f61;
   text-align: right;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #bb86fc #1e1e1e;
 }
 
 #button-container {
